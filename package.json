@@ -1,0 +1,18 @@
+{
+  "name": "desmosc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "desmosc.ts",
+  "scripts": {
+    "run": "bun desmosc.ts",
+    "desktop": "cd Desmos-Desktop && npm run electron"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.2.5"
+  },
+  "dependencies": {
+    "clipboardy": "^3.0.0"
+  }
+}

@@ -1,0 +1,5 @@
+; Infinite loop
+    mov $a 0
+loop:
+    add $a 1
+    jmp loop

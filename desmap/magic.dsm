@@ -1,0 +1,13 @@
+T = 0
+
+T_{dojmp} = 0
+
+T_{new} = 0
+
+i_{ncrement} = T \to T + 1
+
+G_{oto} (x) = T_{new} \to x, T_{dojmp} \to 1
+
+F_{j} = T\to T_{new},T_{dojmp}\to0
+
+L=\left\{T_{dojmp}=1:F_{j},F_{a}\right\}
