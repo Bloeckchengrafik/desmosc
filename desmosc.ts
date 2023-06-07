@@ -24,7 +24,7 @@ async function main() {
 
     let exprs = await mapper.transform()
     console.log(exprs.map((expr) => expr.latex).join("\n"))
-    clipboard.writeSync(exprs.map((expr) => expr.latex).join("\n"))
+    //clipboard.writeSync(exprs.map((expr) => expr.latex).join("\n"))
 
     console.log("==== SYMBOL TABLE ====")
     console.log(mapper.memory)

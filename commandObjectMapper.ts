@@ -95,6 +95,33 @@ export class CommandObjectMapper {
         return this.exprs(`${action} = ${to} \\to \\frac{${to}}{${from}}`)
     }
 
+    public sin(args: string[], lineno: number): Expr[] {
+        this.assertArgsLength(args, 2)
+
+        let [to, from] = this.transformArgs(args)
+        let action = this.getNewInternalActionName(lineno)
+
+        return this.exprs(`${action} = ${to} \\to \\sin\\left\(${from}\\right\)`)
+    }
+
+    public cos(args: string[], lineno: number): Expr[] {
+        this.assertArgsLength(args, 2)
+
+        let [to, from] = this.transformArgs(args)
+        let action = this.getNewInternalActionName(lineno)
+
+        return this.exprs(`${action} = ${to} \\to \\cos\\left\(${from}\\right\)`)
+    }
+
+    public tan(args: string[], lineno: number): Expr[] {
+        this.assertArgsLength(args, 2)
+
+        let [to, from] = this.transformArgs(args)
+        let action = this.getNewInternalActionName(lineno)
+
+        return this.exprs(`${action} = ${to} \\to \\tan\\left\(${from}\\right\)`)
+    }
+
     public je(args: string[], lineno: number): Expr[] {
         this.assertArgsLength(args, 3)
 
@@ -123,6 +150,10 @@ export class CommandObjectMapper {
 
         let labelLineno = this.labels.get(label)
         return this.exprs(`${action} = G_{oto}\\left\(${labelLineno}\\right\)`)
+    }
+
+    public lit(args: string[], lineno: number): Expr[] {
+        return this.exprs(args.join(" "))
     }
 
     public async transform() {
@@ -203,6 +234,10 @@ export class CommandObjectMapper {
                 else if (command.name === "je") { exprsToAdd = this.je(command.args, command.lineno) }
                 else if (command.name === "jne") { exprsToAdd = this.jne(command.args, command.lineno) }
                 else if (command.name === "jmp") { exprsToAdd = this.jmp(command.args, command.lineno) }
+                else if (command.name === "sin") { exprsToAdd = this.sin(command.args, command.lineno) }
+                else if (command.name === "cos") { exprsToAdd = this.cos(command.args, command.lineno) }
+                else if (command.name === "tan") { exprsToAdd = this.tan(command.args, command.lineno) }
+                else if (command.name === "lit") { exprsToAdd = this.lit(command.args, command.lineno) }
                 else {
                     throw new Error(`Invalid command ${command.name} (${command.lineno})`)
                 }

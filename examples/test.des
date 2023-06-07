@@ -1,5 +1,12 @@
-; Infinite loop
+; a circle
     mov $a 0
-loop:
-    add $a 1
-    jmp loop
+    mov $x 0
+    mov $y 0
+
+    lit \left(R_{x},R_{y}\right)
+
+calcxy:
+    sin $x $a
+    cos $y $a
+    add $a 0.05
+    jmp calcxy
